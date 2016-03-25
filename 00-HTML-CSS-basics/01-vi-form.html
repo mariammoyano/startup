@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Form</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="form/formstyle.css">
+	<script>
+	  var i = document.createElement("input");
+	  i.setAttribute("type", "date");
+	  if (i.type == "text") {
+	    $(function() {
+	      $( ".date" ).datepicker();
+	    });
+	  }
+	</script>
+</head>
+<body>
+	<form id="form1" action="" method="get">
+		<div class="field even"><label for="fname"> First Name: </label> <input type="text" name="fname" id="fname" value="" required /></div>
+		<div class="field odd"><label for="lname"> Last Name: </label> <input type="text" name="lname" id="lname" value="" required/></div>
+		<div class="field even"><label for="email"> Email: </label> <input type="email" name="email" id="email" value="" required/></div>
+		<div class="field odd"><label for="birth"> Birthday: </label> <input class="sperk date" type="date" name="birth" id="birth" value="" placeholder="dd/mm/yyyy" required/></div>
+		<div class="field even"><label for="sport"> Favourite Sport: </label> 
+		<select name="sport" id="sport">
+			<option value="">Select sport</option>
+			<option value="baseball">Baseball</option>
+			<option value="football">Football</option>
+			<option value="golf">Golf</option>
+			<option value="hockey">Hockey</option>
+			<option value="soccer">Soccer</option>
+			<option value="tennis">Tennis</option>
+		</select></div>
+		<div class="field odd"><label for="bio"> Bio: </label> <textarea name="bio" id="bio" cols="25" rows="5"></textarea></div>
+		<div class="field even"><input class="button" type="submit" value="submit" />
+		<input class="button" type="reset" value="reset" /></div>
+	</form>
+</body>
+</html>

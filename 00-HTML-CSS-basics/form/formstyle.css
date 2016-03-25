@@ -1,0 +1,25 @@
+.field{
+	padding: 10px;
+	padding-right: 2%;
+	margin: 1px;
+	max-width: 30%;
+}
+.field.even{
+	background-color: #5ab25a;
+}
+.field.odd{
+	background-color: #8ad58a;
+}
+label{
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 110px;
+	text-align: right;
+}
+input, select, textarea{
+	margin-left: 10px;
+}
+.button{
+	width: 30%;
+}
