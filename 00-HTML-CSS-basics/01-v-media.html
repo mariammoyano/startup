@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<title>Media</title>
+	<style type="text/css">
+	body{
+		width: auto;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	video{
+		max-width: 100%;
+		max-height: 100%;
+	}
+	</style>
 </head>
 <body>
 <div>
 	<h2>Much Rejoicing</h2>
-	<video src="much%20rejoicing.mp4" width="480" height="290" controls></video>
+	<video src="much%20rejoicing.mp4" id="vid" controls></video>
+	<label for="vid" hidden>Part of Monty Python's Holy Grail</label>
 </div>
 	<div>
 	<h2>How to throw a Holy Hand Grenade</h2>

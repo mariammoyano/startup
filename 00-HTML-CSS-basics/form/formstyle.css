@@ -1,8 +1,10 @@
+form{
+	width: 25em;
+}
 .field{
 	padding: 10px;
 	padding-right: 2%;
 	margin: 1px;
-	max-width: 30%;
 }
 .field.even{
 	background-color: #5ab25a;
