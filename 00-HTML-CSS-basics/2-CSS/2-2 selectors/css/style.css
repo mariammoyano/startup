@@ -1,0 +1,59 @@
+*{
+  box-sizing: border-box;
+}
+html, body{
+  height: 100%;
+}
+html{
+  font:12px Georgia, serif;
+}
+#header1, #footer1, #nav, #aside{
+  background-image: url("gray_sand.png");
+}
+#header1, #footer1{
+  text-align: center;
+}
+.inner{
+  background-color: lightgrey;
+}
+.container{
+  background-color: #595959;
+  height: 100%;
+  position: relative;
+  padding: 0.5em;
+  padding-top: 1px;
+}
+.side{
+  width: 15%;
+  height: 75%;
+}  
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.middle {
+  position: relative;
+  margin-left: 16%;
+  margin-right: 16%;
+  height: 75%;
+}
+.footer {
+  height: 10%;
+  padding-top: 2%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+.article{
+ position: absolute;
+  right: 0;
+  left: 0;
+  margin: 0.5em;
+  height: 75%;
+}

@@ -1,18 +1,29 @@
-*{
+ *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 html, body{
   height: 100%;
-  text-align: center;
 }
-.header, .footer, .navigation, .sidebar{
+html{
+  font:bold 12px Georgia, serif;
+}
+#header1, #footer1, #nav, #aside{
   background-image: url("gray_sand.png");
 }
-.block{
+.header, .footer{
+  text-align: center;
+}
+body *{
   padding: 2%;
   border-radius: 10px;
   background-color: darkgrey;
   color: white;
+  margin: 0.1em;
+}
+body > *{
+  margin: 0;
 }
 .inner{
   background-color: lightgrey;
@@ -30,7 +41,7 @@ html, body{
 }
 .side{
   width: 15%;
-  height: 75%;
+  height: 100%;
 }  
 .navigation {
   font-size: 12px;
@@ -38,6 +49,7 @@ html, body{
 }
 .sidebar {
   font-size: 10px;
+  text-align: right;
   float: right;
 }
 .content {
@@ -45,7 +57,7 @@ html, body{
   position: relative;
   margin-left: 16%;
   margin-right: 16%;
-  height: 75%;
+  height: 100%;
 }
 .footer {
   font-size: 10px;
@@ -64,14 +76,8 @@ html, body{
   right: 0;
   left: 0;
   margin: 0.5em;
+  height: 66%;
+}
+.center{
   height: 75%;
 }
-[class*=a]:not[class$=r]{
-  background-image: none;
-  background-color:blue;
-}
-
-[class$=r] {
-  background-image: none;
-  background-color:magenta;
-} 
