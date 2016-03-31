@@ -6,15 +6,22 @@
 body{
 	background: url("../images/light_background.png") repeat ;
 }
+.hiddenChk{
+	display: none;
+}
+.dropBar{
+	display: none;
+	width: 100%;
+}
 .container {
   margin: 0 auto;
-  /*max-width: 50rem; /*REVISAR*/
-  width: 90%;
+  width: 100%;
+  padding: .5rem;
 }
 .filler{
 	float: right;
 	width: 40%;
-	margin-bottom: 4rem;
+	margin-bottom: 1rem;
 }
 @media (max-width: 60rem){
 	.filler{
@@ -93,6 +100,15 @@ footer{
   .cell.third { width: 33.3%; }
   .cell.fourth { width: 25%; }
   .cell.flow-opposite { float: right; }  
+  .filler{
+  	margin-bottom: 4rem;  	
+  }
+}
+@media (min-width: 65rem) {
+  .container {
+		margin: 0 auto;
+		width: 90%;
+	}
 }
 @media (max-width: 39rem){    
   .cell.half { width: 50%; }
@@ -112,31 +128,48 @@ footer{
 		width: 100%;
 		max-height: calc(100% - .75rem);
 	}
+	.dropBar{
+		display: block;
+		width: 100%;
+		border-top: 1px solid rgba(0, 0, 0, 0.2);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2); 
+	}
+	.hideable{
+		height: 0;
+		overflow: hidden;
+		padding-top: .5rem;
+	}
+	label{
+		position: relative;
+	}
+	label:before {
+	  content: "";
+	  position: absolute;
+	  width: 0;
+	  height: 0;
+	  top: 50%;
+	  left: 90%;
+	  border-left: 8px solid rgba(0, 0, 0, 0.63);
+	  border-top: 8px solid transparent;
+	  border-bottom: 8px solid transparent;
+	  margin-top: -8px;
+	}
+
+	input[type=checkbox]:checked ~ .hideable {
+	  height: auto;
+	}
+	input[type=checkbox]:checked ~ label:before {
+	  border-left: 8px solid transparent;
+	  border-top: 8px solid rgba(0, 0, 0, 0.63);
+	  border-right: 8px solid transparent;
+	  margin-left: -4px;
+	  margin-top: -4px
+	}
+
+
+
 }
 /*===========================================================================*/
-
-/*Mobile
-===========================================================================*/
-@media screen{
-
-}
-/*===========================================================================*/
-
-/*Custom Scrollbar
-============================================================================*/
-
-/**::-webkit-scrollbar {
-    width: 1em;
-}
- 
-*::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}*/
 
 
 /* Clearfix
