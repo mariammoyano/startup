@@ -1,0 +1,19 @@
+section{
+	padding-bottom: 1rem;
+	text-align: center;
+	min-height: 1.2rem;
+}
+#hworld{
+	opacity: 0;
+
+	-webkit-transition: opacity .5s ease;
+	-moz-transition: opacity .5s ease;
+	-ms-transition: opacity .5s ease;
+	-o-transition: opacity .5s ease;
+	transition: opacity .5s ease;
+	padding-bottom: .5rem;
+}
+#jokeButton{
+	display: block;
+	margin: auto;
+}

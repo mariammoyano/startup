@@ -1,0 +1,17 @@
+section{
+	text-align: center;
+}
+#hworld{
+	opacity: 0;
+
+	/*-webkit-transition: opacity 1s ease;
+	-moz-transition: opacity 1s ease;
+	-ms-transition: opacity 1s ease;
+	-o-transition: opacity 1s ease;*/
+	transition: opacity 1s ease;
+	padding-bottom: .5rem;
+}
+#jokeButton{
+	display: block;
+	margin: auto;
+}
