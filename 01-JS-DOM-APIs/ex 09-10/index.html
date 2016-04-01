@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Topic 1</title>	
-	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Topic 1</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />	
 	<meta name="keywords" content="ark,haywire,phenomenal,forearm,abstractly,time">
 	
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
@@ -14,10 +14,23 @@
 		window.onload = fadein;
 	</script>
 </head>
-<body>
+<body onload="searchRepos('jsrepoList', 'JavaScript')">
 <h1>JavaScript, and DOM APIs</h1>
 <section id="hworld">Hello World</section>
 <section id="jokeSection"></section>
 <button id="jokeButton" onclick="tellJoke('http://api.icndb.com/jokes/random')">Tell me a joke</button>
+<div class="container clearfix">
+	<div class="column third">
+		<h2>JavaScript Repositories</h2>
+		<div id="jsrepoList">
+		</div>
+	</div>
+	<div class="column two-thirds">
+		<h2>Search Repositories</h2>
+		<input type="text" id="userInput" placeholder="Search"></input><button onclick="searchRepos('userList', userInput.value)">Search</button>
+		<div id="userList">
+		</div>
+	</div>
+</div>
 </body>
 </html>
