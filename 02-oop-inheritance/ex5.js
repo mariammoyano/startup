@@ -1,5 +1,5 @@
 
-class EventEmitter {
+export class EventEmitter {
 	constructor(){
 		this.listeners = new Map();
 	}
@@ -13,13 +13,15 @@ class EventEmitter {
 	}
 
 	emit(event){
+		if(this.listeners.has(event)){
 			console.log(`Calling '${event}' listenters`);
-		try{
-			for(let value of this.listeners.get(event)){
-				value();
-			}
-		} catch (ex){
-			console.log(`EXCEPTION thrown by 'emit()'. (${ex}).`);
+			try{
+				for(let value of this.listeners.get(event)){
+					value();
+				}
+			} catch (ex){
+				console.log(`EXCEPTION thrown by 'emit()'. (${ex}).`);
+			}			
 		}
 	}
 
