@@ -2,6 +2,12 @@
 <ul>
 	<li>Year: {{movie.year}}</li>
 	<li>Duration: {{movie.duration}}</li>
-	<li>Sinopsis: <p>{{movie.description}}</p></li>
+	<li ng-show="movie.cast.length > 0">Cast: 
+		<ul>
+			<li ng-repeat="actor in movie.cast">{{actor.name}} (age {{actor.age}})</li>		
+		</ul>
+	</li>
+
+	<li>Synopsis: <p>{{movie.description}}</p></li>
 </ul>
 

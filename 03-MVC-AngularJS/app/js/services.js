@@ -108,6 +108,32 @@ const Social = {
 	}
 };
 
+// "Fake" Promise
+class customPromise {
+	constructor(configFunction){
+		this.state = "pending";
+		this.execute = configFunction;
+		this.execute();
+	}
+
+	resolve(arg) {
+		this.state = "resolved";
+		this.returnArg = arg;
+	}
+
+	reject(arg) {
+		this.state = "rejected";
+		this.returnArg = arg;
+	}
+
+	then(successFunction, errorFunction){
+		if(this.state === "rejected" && errorFunction !== undefined){
+			errorFunction(this.returnArg);
+		} else if (this.state === "resolved" && successFunction !== undefined) {
+			successFunction(this.returnArg);
+		}
+	}
+}
 
 /* Services */
 
@@ -182,13 +208,22 @@ movieAppServices.factory('MovieFactory',
 	    	empty.on('play', v => logger.log('play', empty));
 	    	return empty;
 	    },
+	    actorsFromArray: function(array){
+	    	let castArray = [];
+	    	for(let obj of array){
+	    		let tmpAct = new Actor(obj.name, new Date(obj.dateOfBirth));
+	    		tmpAct.dateOfDeath = new Date(obj.dateOfDeath);
+	    		castArray.push(tmpAct);
+	    	}
+	    	return castArray;
+	    },
 	    movieFromObject: function(obj){
 	    	let tmpMov = this.emptyMovie();
     		tmpMov.name = obj.name;
     		tmpMov.year = obj.year;
     		tmpMov.duration = obj.duration;
     		tmpMov.description = obj.description;
-    		tmpMov.cast = obj.cast;
+    		tmpMov.cast = this.actorsFromArray(obj.cast);
     		
     		return tmpMov;	    	
 	    },
@@ -206,11 +241,17 @@ movieAppServices.factory('MovieFactory',
 movieAppServices.factory("LStorage", function($window, $rootScope) {
   return {
     setData: function(val) {
-      $window.localStorage && $window.localStorage.setItem('movie-storage', JSON.stringify(val));
-      return this;
+      $window.localStorage.setItem('movie-storage', JSON.stringify(val));
     },
     getData: function() {
-      return $window.localStorage && JSON.parse($window.localStorage.getItem('movie-storage'));
+    	return new customPromise(function(resolve, reject){
+    		let data = JSON.parse($window.localStorage.getItem('movie-storage'));
+    		if(data === null || data === undefined){
+    			this.reject('Could not retrieve data from localhost');
+    		} else {
+    			this.resolve(data);
+    		}
+    	});
     }
   };
 });

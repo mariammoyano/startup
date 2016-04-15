@@ -9,7 +9,7 @@ movieApp.config(['$routeProvider',
     $routeProvider.
       when('/movies', {
         templateUrl: 'views/movieList.html',
-        controller: 'MovieListCtrl'
+        controller: 'MovieListCtrl as l'
       }).
       when('/movies/:movieIndex', {
         templateUrl: 'views/movieDetails.html',
