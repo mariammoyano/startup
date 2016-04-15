@@ -1,0 +1,21 @@
+{
+  "name": "topic_3",
+  "description": "",
+  "main": "main.html",
+  "authors": [
+    "Maria Mercedes Moyano"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-mocks": "^1.5.0"    
+  }
+}
