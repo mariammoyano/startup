@@ -22,8 +22,21 @@
 		    </div>
 			<div>Duration: <input type="text" ng-model="formMovie.duration" /></div>
 			<div>Description: <textarea ng-model="formMovie.description"> </textarea></div>
-			<input type="submit" ng-click="l.persistNewMovie(formMovie)" ng-disabled="movieForm.$invalid" value="Add" ng-show="formMode == 'new'" />
-			<input type="submit" ng-click="l.saveMovieChanges()" value="Change" ng-disabled="movieForm.$invalid" ng-show="formMode == 'edit'"/>
+			<div>Cast: 
+				<div ng-repeat="actor in formMovie.cast">{{actor.name}}
+					<button ng-click="l.removeActor($index, formMovie)" >Remove</button>
+				</div>
+				<div><button ng-show="!showActor" ng-click="l.newActor()">Add Actor</button></div>
+				<div ng-show="showActor">
+					<div>Name: <input type="text" ng-model="formActor.name" /></div>
+					<div>Date of Birth: <input type="date" ng-model="formActor.dateOfBirth"/></div>
+					<div>Date of Death: <input type="date" ng-model="formActor.dateOfDeath"/></div>
+					<div><button ng-click="l.addActor(formActor, formMovie)">Add</button>
+					<button ng-click="showActor = false">Cancel</button></div>
+				</div>
+			</div>
+			<input type="submit" ng-click="l.persistNewMovie(formMovie)" ng-disabled="movieForm.$invalid" value="Add Movie" ng-show="formMode == 'new'" />
+			<input type="submit" ng-click="l.saveMovieChanges()" value="Save Changes" ng-disabled="movieForm.$invalid" ng-show="formMode == 'edit'"/>
 			<input type="button" ng-click="showForm = false" value="Cancel" />
 		</form>
 	</div>

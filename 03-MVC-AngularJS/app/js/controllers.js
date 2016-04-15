@@ -15,12 +15,13 @@ movieAppControllers.controller('MovieListCtrl', ['$scope', '$rootScope', 'LStora
   }
 
   this.persistNewMovie = function(movie) {
-    $rootScope.movies.push(movie);
+    $scope.movies.push(movie);
     this.save();
     $scope.showForm = false;
   }
 
   this.saveMovieChanges = function(){
+    $scope.movies[$scope.editIndex] = angular.copy($scope.formMovie);;
     this.save();
     $scope.showForm = false;
   }
@@ -28,11 +29,16 @@ movieAppControllers.controller('MovieListCtrl', ['$scope', '$rootScope', 'LStora
   this.editMovie = function(index) {
     $scope.formMode = "edit";
     $scope.showForm = true;
-    $scope.formMovie = $rootScope.movies[index];
+    $scope.editIndex = index;
+    $scope.formMovie = angular.copy($scope.movies[index]);
+  }
+
+  this.cancelEdit = function(){
+    $scope.showForm = false;
   }
 
   this.removeMovie = function(index){
-    $rootScope.movies.splice(index, 1);
+    $scope.movies.splice(index, 1);
     this.save();
   }
 
@@ -41,6 +47,21 @@ movieAppControllers.controller('MovieListCtrl', ['$scope', '$rootScope', 'LStora
     $scope.showForm = true;
     $scope.formMovie = MovieFactory.emptyMovie();
   }
+
+  this.newActor = function(){
+    $scope.showActor = true;
+    $scope.formActor = new Actor();
+  }
+
+  this.addActor = function(actor, movie){
+    movie.addCast(actor);
+    $scope.showActor = false;
+  }
+
+  this.removeActor = function(index, movie) {
+    movie.cast.splice(index,1);
+  }
+
 
   if($rootScope.movies === undefined) {
     let self = this;
@@ -55,8 +76,7 @@ movieAppControllers.controller('MovieListCtrl', ['$scope', '$rootScope', 'LStora
       self.populate();
       self.save();
     });
-  	// let data = LStorage.getData();
-  	// data == null ? (this.populate(), this.save()) : $rootScope.movies  = MovieFactory.moviesFromArray(data);
+    $scope.movies = $rootScope.movies;
   }
   
 }]);
