@@ -65,7 +65,7 @@ class Logger {
 }
 
 class Movie extends EventEmitter {
-	constructor(name, year, duration, description = "") {
+	constructor(name = "", year = "", duration = "", description = "") {
 		super();
 		this.name = name;
 		this.year = year;
@@ -113,8 +113,9 @@ const Social = {
 
 var movieAppServices = angular.module('movieAppServices', []);
 
-movieAppServices.factory('DefaultMovies',
+movieAppServices.factory('MovieFactory',
   function(){
+		let logger = new Logger();
     return {
 	    populate: function() {		    	
 			// Movies
@@ -148,7 +149,6 @@ movieAppServices.factory('DefaultMovies',
 
 			// Adding Logger to movies
 			// *******************************************************
-			let logger = new Logger();
 			matrix.on('play', v => logger.log('play', matrix));
 			crystal.on('play', logger.log);
 			guardians.on('play', v => logger.log('play', guardians));
@@ -157,25 +157,48 @@ movieAppServices.factory('DefaultMovies',
 			// *******************************************************
 			Object.assign(Movie.prototype, Social);
 
-			matrix.play();
-			matrix.pause();
-			matrix.resume();
-			matrix.like("Sam Samson");
-			matrix.share("John Johnson");
+			// matrix.play();
+			// matrix.pause();
+			// matrix.resume();
+			// matrix.like("Sam Samson");
+			// matrix.share("John Johnson");
 
-			crystal.play();
-			crystal.pause();
-			crystal.resume();
-			crystal.like("Sam Samson");
-			crystal.share("John Johnson");
+			// crystal.play();
+			// crystal.pause();
+			// crystal.resume();
+			// crystal.like("Sam Samson");
+			// crystal.share("John Johnson");
 
-			guardians.play();
-			guardians.pause();
-			guardians.resume();
-			guardians.like("Sam Samson");
-			guardians.share("John Johnson");
+			// guardians.play();
+			// guardians.pause();
+			// guardians.resume();
+			// guardians.like("Sam Samson");
+			// guardians.share("John Johnson");
 
 	      return [matrix,crystal,guardians];
+	    },
+	    emptyMovie: function(){
+	    	let empty = new Movie();
+	    	empty.on('play', v => logger.log('play', empty));
+	    	return empty;
+	    },
+	    movieFromObject: function(obj){
+	    	let tmpMov = this.emptyMovie();
+    		tmpMov.name = obj.name;
+    		tmpMov.year = obj.year;
+    		tmpMov.duration = obj.duration;
+    		tmpMov.description = obj.description;
+    		tmpMov.cast = obj.cast;
+    		
+    		return tmpMov;	    	
+	    },
+	    moviesFromArray: function(jsonArray){
+	    	let movieArray = [];
+	    	for(let obj of jsonArray){
+	    		let tmpMov = this.movieFromObject(obj);
+	    		movieArray.push(tmpMov);
+	    	}
+	    	return movieArray;
 	    }
 	  };
   });

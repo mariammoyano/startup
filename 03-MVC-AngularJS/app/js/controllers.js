@@ -4,20 +4,23 @@
 
 var movieAppControllers = angular.module('movieAppControllers', ['movieAppServices']);
 
-movieAppControllers.controller('MovieListCtrl', ['$scope','LStorage','DefaultMovies', function($scope, LStorage, DefaultMovies) {
-
-  $scope.movies  = LStorage.getData();
+movieAppControllers.controller('MovieListCtrl', ['$scope', '$rootScope', 'LStorage', 'MovieFactory', function($scope, $rootScope, LStorage, MovieFactory) {
   
   this.populate = function() {
-    $scope.movies = DefaultMovies.populate();
-  };
+    $rootScope.movies = MovieFactory.populate();
+  }
 
   this.save = function() {
-  	return LStorage.setData($scope.movies);
+  	return LStorage.setData($rootScope.movies);
   }
 
-  if($scope.movies === [] || $scope.movies === null){
-  	this.populate();
-  	this.save();
+  if($rootScope.movies === undefined) {
+  	let data = LStorage.getData();
+  	data == null ? (this.populate(), this.save()) : $rootScope.movies  = MovieFactory.moviesFromArray(data);
   }
+  
+}]);
+
+movieAppControllers.controller('MovieDetailCtrl', ['$scope', '$rootScope', '$routeParams', 'LStorage', 'MovieFactory', function($scope, $rootScope, $routeParams, LStorage, MovieFactory) {
+	$scope.movie = $rootScope.movies[$routeParams.movieIndex];
 }]);

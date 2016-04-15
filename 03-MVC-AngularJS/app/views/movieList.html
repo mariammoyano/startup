@@ -1,0 +1,8 @@
+<h1>Movie list</h1>
+<div>
+	<ul>
+		<li ng-repeat="movie in movies">		
+        <span><a href="#/movies/{{$index}}">{{movie.name}}</a> ({{movie.year}})</span>
+      </li>
+	</ul>
+</div>
