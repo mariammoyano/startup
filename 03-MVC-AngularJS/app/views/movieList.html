@@ -1,43 +1,51 @@
 <h1>Movie list</h1>
-<div>
+<div class="container">
 	<ul id="ulMovies">
-		<li ng-repeat="movie in movies">		
-        <span><a href="#/movies/{{$index}}">{{movie.name}}</a> ({{movie.year}})</span> 
-        <button ng-click="l.editMovie($index)">Edit</button>
-        <button ng-click="l.removeMovie($index)">Remove</button>
+		<li class="row" ng-repeat="movie in movies">
+		<div>
+        	<span><a href="#/movies/{{$index}}">{{movie.name}}</a> ({{movie.year}})</span>
+        </div>		 
+        <div class="buttons">
+	        <button ng-click="l.editMovie($index)">Edit</button>
+	        <button ng-click="l.removeMovie($index)">Remove</button>
+        </div>
       </li>
     </ul>
 	<div>
 		<button ng-click="l.newMovie()" ng-show="!showForm">Add Movie</button>
 	</div>
 	<div class="formContainer" ng-show="showForm">
-		<form name="movieForm" novalidate>
-			<div>Name: <input type="text" ng-model="formMovie.name" name="mName" ng-model-options="{ updateOn: 'blur' }" required /></div>
+	 	<form name="movieForm" novalidate>
+			<div class="row"><label>Name: </label> <input type="text" ng-model="formMovie.name" name="mName" ng-model-options="{ updateOn: 'blur' }" required /></div>
 			<div ng-show="movieForm.mName.$touched">
 		      <div ng-show="movieForm.mName.$error.required">Movie name required.</div>
 		    </div>
-			<div>Year: <input type="number" ng-model="formMovie.year" name="mYear" ng-model-options="{ updateOn: 'blur' }"required /></div>
+
+			<div class="row even"><label>Year: </label> <input type="number" ng-model="formMovie.year" name="mYear" ng-model-options="{ updateOn: 'blur' }"required /></div>
 			<div ng-show="movieForm.mYear.$touched">
 		      <div ng-show="movieForm.mYear.$error.required">Movie year required.</div>
 		    </div>
-			<div>Duration: <input type="text" ng-model="formMovie.duration" /></div>
-			<div>Description: <textarea ng-model="formMovie.description"> </textarea></div>
-			<div>Cast: 
+
+			<div class="row"><label>Duration: </label> <input type="text" ng-model="formMovie.duration" /></div>
+			<div class="row"><label>Description: </label> <textarea ng-model="formMovie.description"> </textarea></div>
+			<div class="row">Cast: 
 				<div ng-repeat="actor in formMovie.cast">{{actor.name}}
 					<button ng-click="l.removeActor($index, formMovie)" >Remove</button>
 				</div>
 				<div><button ng-show="!showActor" ng-click="l.newActor()">Add Actor</button></div>
 				<div ng-show="showActor">
-					<div>Name: <input type="text" ng-model="formActor.name" /></div>
-					<div>Date of Birth: <input type="date" ng-model="formActor.dateOfBirth"/></div>
-					<div>Date of Death: <input type="date" ng-model="formActor.dateOfDeath"/></div>
+					<div><label>Name: </label> <input type="text" ng-model="formActor.name" /></div>
+					<div><label>Date of Birth: </label> <input type="date" ng-model="formActor.dateOfBirth"/></div>
+					<div><label>Date of Death: </label> <input type="date" ng-model="formActor.dateOfDeath"/></div>
 					<div><button ng-click="l.addActor(formActor, formMovie)">Add</button>
 					<button ng-click="showActor = false">Cancel</button></div>
 				</div>
 			</div>
-			<input type="submit" ng-click="l.persistNewMovie(formMovie)" ng-disabled="movieForm.$invalid" value="Add Movie" ng-show="formMode == 'new'" />
-			<input type="submit" ng-click="l.saveMovieChanges()" value="Save Changes" ng-disabled="movieForm.$invalid" ng-show="formMode == 'edit'"/>
-			<input type="button" ng-click="showForm = false" value="Cancel" />
+			<div class="row">
+				<input type="submit" ng-click="l.persistNewMovie(formMovie)" ng-disabled="movieForm.$invalid" value="Add Movie" ng-show="formMode == 'new'" />
+				<input type="submit" ng-click="l.saveMovieChanges()" value="Save Changes" ng-disabled="movieForm.$invalid" ng-show="formMode == 'edit'"/>
+				<input type="button" ng-click="showForm = false" value="Cancel" />
+			</div>
 		</form>
 	</div>
 

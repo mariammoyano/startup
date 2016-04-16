@@ -1,0 +1,86 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.column{
+	position: relative;
+    float: left;
+    padding: .5rem;
+    width: 100%;
+    height: auto;
+}
+.column.sixth{
+	width: 16.7%;
+}
+.column.five-sixths{
+	width: 83.3%;
+}
+.column.third{
+	width: 33.3%;
+}
+.column.two-thirds{
+	width: 66.7%;	
+}
+.column.half{
+	width: 50%;	
+}
+.column.right{
+	float: right;
+}
+/*table{
+	width: 100%;
+}
+th{
+	background-color: rgba(10, 0, 0, 0.69);
+	color: rgba(255, 255, 255, 0.95);
+}*/
+li {
+	list-style-type: none;
+}
+.row {
+	padding: .5rem;
+	width: 30%
+}
+.row:nth-of-type(even){
+	background-color: rgb(230, 230, 230);
+}
+.row:nth-of-type(odd){
+	background-color: rgb(192, 192, 192);
+}
+.row.even{
+	background-color: rgb(230, 230, 230);
+}
+.buttons {
+	padding-top: .5rem;
+ 	padding-left: 15rem;
+}
+form {
+	padding-left: 2.5rem;
+}
+label{
+	display: inline-block;
+	float: left;
+	clear: left;
+	width: 110px;
+	text-align: right;
+}
+input, textarea{
+	margin-left: 10px;
+}
+/*tr td:nth-of-type(1){
+	background-color: rgba(10, 0, 0, 0.17);
+}*/
+
+/* Clearfix
+   ========================================================================== */
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
