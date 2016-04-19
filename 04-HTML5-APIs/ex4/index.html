@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Topic 5 - Websocket</title>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+	<div class="container">	
+		Messages:
+		<div id="msglog" class="msgContainer"></div>
+		
+		<div>
+			<button id="connbtn" onclick="init()">Connect</button>
+			<button id="discbtn" onclick="websocket.close()">Disconnect</button>
+			<textarea id="msgInput" placeholder="Write your message here"></textarea>
+			<button id="sendbtn" disabled onclick="doSend(msgInput.value)">Send</button>
+		</div>		
+	</div>
+
+	<script type="text/javascript" src="js/socket.js"></script>
+</body>
+</html>

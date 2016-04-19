@@ -1,0 +1,31 @@
+html, body{
+	height: 100%;
+}
+
+.canvascontainer {	
+	position: relative;
+	margin: 1rem;
+}
+canvas {
+	border: 1px dotted;
+}
+.canvasSize {
+	width: 500px;
+	height: 250px;	
+}
+.absPos {
+	position: absolute;
+	top: 0;
+	left: 0;	
+}
+.svg{
+	width: 300px; 
+	height: 200px;	
+}
+.template {
+}
+.star{
+	stroke-width: 1px;
+	stroke: #0B3454;
+	fill:#78B9EC;
+}

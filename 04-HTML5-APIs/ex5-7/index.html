@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Topic 5 - Canvas</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script type="text/javascript" src="js/canvas.js"></script>
+</head>
+<body onload="initCanvases(); drawPolygons(); startAnimation()">
+	<div class="canvascontainer canvasSize">
+		<canvas class="absPos canvasSize" id="polygonCanvas"></canvas>
+		<canvas class="absPos canvasSize" id="animationCanvas" onclick="toggleAnimation()"></canvas>
+	</div>
+	<p>Click canvas to toggle animation</p>
+	<button onclick="drawPolygons()" >Change Background</button>
+	</br>
+	<svg class="svg">
+	  <polygon class="star" points="100,10 40,198 190,78 10,78 160,198" />
+	</svg>
+</body>
+</html>

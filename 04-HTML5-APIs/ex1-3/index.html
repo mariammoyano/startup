@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Topic 5</title>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+	<div>
+		<textarea id="filedrag" placeholder="Write or drop text file here"></textarea>
+		<button onclick="save('text1',filedrag.value)">Store</button>
+	</div>
+	<div>
+		<button onclick="clearData('text1')">Clear Storage</button>
+	</div>
+
+	<div>
+		Stored value:
+		<textarea readonly="true" id="persistedDataTxtArea"></textarea>
+	</div>
+
+	<script type="text/javascript" src="js/db.js"></script>
+	<script type="text/javascript" src="js/dnd.js"></script>
+</body>
+</html>
