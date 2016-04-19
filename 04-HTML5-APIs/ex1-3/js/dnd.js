@@ -8,11 +8,13 @@ if (window.FileList && window.FileReader) {
 
 function Init() {
 	let filedrag = document.getElementById("filedrag");
+	let textarea = document.getElementById("textInput");
 
 	filedrag.addEventListener("dragover", FileDragHover, false);
 	filedrag.addEventListener("dragleave", FileDragHover, false);
 	filedrag.addEventListener("drop", FileSelectHandler, false);
 	filedrag.style.display = "block";
+	textarea.style.display = "none";
 }
 
 function FileDragHover(e) {

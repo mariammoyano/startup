@@ -1,12 +1,12 @@
+.input{
+	font-weight: bold;
+	padding: 1em;
+	margin: 1em 0;
+	color: #555;	
+}
+
 #filedrag {
 	display: none;
-	font-weight: bold;
-	text-align: center;
-	padding: 1em 0;
-	margin: 1em 0;
-	color: #555;
-	border: 2px dashed;
-	border-radius: 7px;
 	cursor: default;
 }
 
@@ -15,6 +15,8 @@
 	background-color: #C8DCFA;
 	border-style: solid;
 	box-shadow: inset 0 3px 4px #888;
+	border: 2px dashed;
+	border-radius: 7px;
 }
 
 textarea {
